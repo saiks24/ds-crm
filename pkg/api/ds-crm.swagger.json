@@ -1,0 +1,327 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "api/ds-crm.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/task/comment": {
+      "post": {
+        "operationId": "DoCommentTask",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ds_crmDoCommentTaskResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ds_crmDoCommentTaskRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DSCrm"
+        ]
+      }
+    },
+    "/api/task/create": {
+      "post": {
+        "operationId": "TaskCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ds_crmTaskCreateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ds_crmTaskCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DSCrm"
+        ]
+      }
+    },
+    "/api/task/remove": {
+      "post": {
+        "operationId": "TaskRemove",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ds_crmTaskRemoveResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ds_crmTaskRemoveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DSCrm"
+        ]
+      }
+    },
+    "/api/task/status-change": {
+      "post": {
+        "operationId": "ChangeTaskStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ds_crmChangeTaskStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ds_crmChangeTaskStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DSCrm"
+        ]
+      }
+    },
+    "/api/task/status/{status_name}": {
+      "get": {
+        "operationId": "GetTasksOnStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ds_crmGetTasksOnStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "status_name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "DSCrm"
+        ]
+      }
+    },
+    "/api/task/user/{user_id}": {
+      "get": {
+        "operationId": "GetUserTasks",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ds_crmGetUserTasksResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "DSCrm"
+        ]
+      }
+    },
+    "/api/task/{task_id}": {
+      "get": {
+        "operationId": "GetTaskByID",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ds_crmGetTaskByIDResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "DSCrm"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ds_crmChangeTaskStatusRequest": {
+      "type": "object",
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "new_status": {
+          "type": "string"
+        }
+      }
+    },
+    "ds_crmChangeTaskStatusResponse": {
+      "type": "object"
+    },
+    "ds_crmDoCommentTaskRequest": {
+      "type": "object",
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "comment_text": {
+          "type": "string"
+        }
+      }
+    },
+    "ds_crmDoCommentTaskResponse": {
+      "type": "object"
+    },
+    "ds_crmGetTaskByIDResponse": {
+      "type": "object"
+    },
+    "ds_crmGetTasksOnStatusResponse": {
+      "type": "object"
+    },
+    "ds_crmGetUserTasksResponse": {
+      "type": "object"
+    },
+    "ds_crmTaskCreateRequest": {
+      "type": "object"
+    },
+    "ds_crmTaskCreateResponse": {
+      "type": "object"
+    },
+    "ds_crmTaskRemoveRequest": {
+      "type": "object",
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "ds_crmTaskRemoveResponse": {
+      "type": "object"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}
