@@ -6,4 +6,4 @@ Api documentation (may use for generate clients)
 Swagger - https://github.com/saiks24/ds-crm/blob/master/pkg/api/ds-crm.swagger.json
 
 
-Proto models - https://github.com/saiks24/ds-crm/blob/master/pkg/api/ds-crm.pb.go
+Proto - https://github.com/saiks24/ds-crm/blob/master/api/ds-crm.proto
